@@ -1,0 +1,156 @@
+import { ToolMetadata } from "@/types/tool";
+
+export const developerTools: ToolMetadata[] = [
+  {
+    title: "JSON Formatter",
+    slug: "json-formatter",
+    category: "Formatter",
+    description: "Format and pretty-print JSON data with correct indentation.",
+    metaTitle: "Free JSON Formatter Online",
+    metaDescription: "Format, validate, and beautify your JSON data online instantly. Secure, client-side only.",
+  },
+  {
+    title: "JSON Validator",
+    slug: "json-validator",
+    category: "Validator",
+    description: "Check if your JSON is valid and find syntax errors quickly.",
+  },
+  {
+    title: "JSON Minifier",
+    slug: "json-minifier",
+    category: "Minifier",
+    description: "Minify JSON by removing whitespace and comments to save space.",
+  },
+  {
+    title: "Base64 Encode",
+    slug: "base64-encode",
+    category: "Encoder",
+    description: "Encode text or data to Base64 format securely.",
+  },
+  {
+    title: "Base64 Decode",
+    slug: "base64-decode",
+    category: "Decoder",
+    description: "Decode Base64 encoded data back to plain text.",
+  },
+  {
+    title: "URL Encode",
+    slug: "url-encode",
+    category: "Encoder",
+    description: "Safely encode URLs to escape special characters.",
+  },
+  {
+    title: "URL Decode",
+    slug: "url-decode",
+    category: "Decoder",
+    description: "Decode URL encoded strings back to normal text.",
+  },
+  {
+    title: "JWT Decoder",
+    slug: "jwt-decoder",
+    category: "Decoder",
+    description: "Decode JSON Web Tokens (JWT) to view payload and header data.",
+  },
+  {
+    title: "UUID Generator",
+    slug: "uuid-generator",
+    category: "Generator",
+    description: "Generate random UUIDs (v4) for your applications.",
+  },
+  {
+    title: "Timestamp Converter",
+    slug: "timestamp-converter",
+    category: "Converter",
+    description: "Convert Unix timestamps to readable dates and vice-versa.",
+  },
+  {
+    title: "Regex Tester",
+    slug: "regex-tester",
+    category: "Tester",
+    description: "Test regular expressions against sample text.",
+  },
+  {
+    title: "Cron Expression Generator",
+    slug: "cron-expression-generator",
+    category: "Generator",
+    description: "Generate and explain cron schedule expressions.",
+  },
+  {
+    title: "Hash Generator",
+    slug: "hash-generator",
+    category: "Generator",
+    description: "Generate MD5, SHA-1, SHA-256 hashes from text.",
+  },
+  {
+    title: "Password Generator",
+    slug: "password-generator",
+    category: "Generator",
+    description: "Generate secure, random passwords with custom rules.",
+  },
+  {
+    title: "Text Diff Checker",
+    slug: "text-diff-checker",
+    category: "Text",
+    description: "Compare two text documents and highlight the differences.",
+  },
+  {
+    title: "QR Code Generator",
+    slug: "qr-code-generator",
+    category: "Generator",
+    description: "Generate QR codes from text or URLs instantly.",
+  },
+  {
+    title: "SQL Formatter",
+    slug: "sql-formatter",
+    category: "Formatter",
+    description: "Format and beautify raw SQL queries.",
+  },
+  {
+    title: "HTML Formatter",
+    slug: "html-formatter",
+    category: "Formatter",
+    description: "Format and beautify raw HTML code.",
+  },
+  {
+    title: "CSS Formatter",
+    slug: "css-formatter",
+    category: "Formatter",
+    description: "Format and beautify CSS code.",
+  },
+  {
+    title: "JavaScript Formatter",
+    slug: "javascript-formatter",
+    category: "Formatter",
+    description: "Format and beautify JavaScript code.",
+  },
+  {
+    title: "Markdown Previewer",
+    slug: "markdown-previewer",
+    category: "Text",
+    description: "Preview Markdown code in real-time.",
+  },
+  {
+    title: "Slug Generator",
+    slug: "slug-generator",
+    category: "Generator",
+    description: "Convert strings to URL-friendly slugs.",
+  },
+  {
+    title: "Word Counter",
+    slug: "word-counter",
+    category: "Text",
+    description: "Count words, characters, and paragraphs in your text.",
+  },
+  {
+    title: "Case Converter",
+    slug: "case-converter",
+    category: "Text",
+    description: "Convert text to uppercase, lowercase, camelCase, etc.",
+  },
+  {
+    title: "Color Converter",
+    slug: "color-converter",
+    category: "Converter",
+    description: "Convert between HEX, RGB, HSL, and HSV color formats.",
+  }
+];

@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FreeDevTools AI
 
-## Getting Started
+Free Developer Tools & AI Prompt Generators built with Next.js App Router, Tailwind CSS, and shadcn/ui.
 
-First, run the development server:
+## Project Overview
+This project provides a massive collection of 25+ free developer utilities, 15+ AI prompt generators, and SEO tools that run almost entirely client-side for performance and privacy.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tech Stack
+- Next.js 15+ (App Router)
+- TypeScript
+- Tailwind CSS (v4)
+- shadcn/ui
+- Vitest & Playwright
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Copy `.env.example` to `.env.local` and configure it:
+   ```bash
+   cp .env.example .env.local
+   ```
+4. Start development server:
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
+- `NEXT_PUBLIC_SITE_URL`: The canonical URL of the site (e.g., `https://freedevtools.ai`)
+- `NEXT_PUBLIC_SITE_NAME`: The site name (e.g., `FreeDevTools AI`)
+- `NEXT_PUBLIC_ADSENSE_CLIENT`: Your Google AdSense publisher ID (e.g., `ca-pub-XXXXXXXXXXXXXXXX`). AdSense components will only load if this is present.
+- `NEXT_PUBLIC_GA_ID`: Your Google Analytics Measurement ID (e.g., `G-XXXXXXXXXX`)
 
-## Learn More
+## Branch Workflow
+- `main`: Production branch
+- `develop`: Active development / Preview
+- `feature/*`: For new tools and features
+- `fix/*`: For bug fixes
+- `seo/*`: For SEO improvements
+- `chore/*`: For configuration
 
-To learn more about Next.js, take a look at the following resources:
+Use Conventional Commits (e.g., `feat: add new JSON tool`, `fix: correct JWT logic`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## GitHub Actions CI
+The `.github/workflows/ci.yml` is configured to run tests (Vitest + Playwright), linting, typechecking, and production builds on `push` and `pull_request` to `main` and `develop`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Cloudflare Pages Deployment
+1. Connect this GitHub repository to your Cloudflare Pages account.
+2. Production branch: `main`
+3. Preview branch: `develop`
+4. Build command: `npm run build`
+5. Build output directory: `.next`
+6. Add the environment variables (`NEXT_PUBLIC_SITE_URL`, etc.) in the Cloudflare Pages settings.
+7. Merging to `main` creates a production deployment. Pushing to `develop` creates a preview deployment.
 
-## Deploy on Vercel
+## AdSense Setup
+1. Add your AdSense Publisher ID to the `NEXT_PUBLIC_ADSENSE_CLIENT` environment variable.
+2. The `AdSenseScript` component loads the AdSense library automatically.
+3. You can enable Auto Ads in the AdSense console, or place specific ad unit IDs into the `adSlot` prop of `TopBannerAd`, `SidebarAd`, `InContentAd`, and `BottomAd` components.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Testing Checklist
+- `npm run typecheck` (TypeScript)
+- `npm run lint` (ESLint)
+- `npm run test` (Vitest)
+- `npm run test:e2e` (Playwright Smoke Tests)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contribution
+Check out `develop`, create a feature branch, build your tool in `src/components/tools/`, add it to the data registry in `src/data/`, and submit a PR.
