@@ -17,11 +17,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: tool.metaTitle || tool.title,
     description: tool.metaDescription || tool.description,
+    alternates: {
+      canonical: `${SITE_NAME === "FreeDevTools AI" ? "https://freedevtools.ai" : "http://localhost:3000"}/tools/${slug}`,
+    },
     openGraph: {
       title: tool.metaTitle || tool.title,
       description: tool.metaDescription || tool.description,
       siteName: SITE_NAME,
       type: "website",
+      url: `${SITE_NAME === "FreeDevTools AI" ? "https://freedevtools.ai" : "http://localhost:3000"}/tools/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: tool.metaTitle || tool.title,
+      description: tool.metaDescription || tool.description,
     },
   };
 }
@@ -44,9 +53,29 @@ export default async function ToolPage({ params }: Props) {
 
   const ToolComponent = toolComponents[slug] || FallbackComponent;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": tool.title,
+    "description": tool.description,
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  };
+
   return (
-    <ToolLayout metadata={tool}>
-      <ToolComponent />
-    </ToolLayout>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ToolLayout metadata={tool}>
+        <ToolComponent />
+      </ToolLayout>
+    </>
   );
 }
