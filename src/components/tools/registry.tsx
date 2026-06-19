@@ -34,4 +34,11 @@ export const toolComponents: Record<string, ComponentType> = {
   "word-counter": dynamic(() => import("./word-counter")),
   "case-converter": dynamic(() => import("./case-converter")),
   "color-converter": dynamic(() => import("./color-converter")),
+  "svg-optimizer": dynamic(() => import("./svg-optimizer")),
+  "image-to-base64": dynamic(() => import("./image-to-base64")),
+  "css-gradient-generator": dynamic(() => import("./css-gradient-generator")),
+  "dummy-json-generator": dynamic(() => import("./dummy-json-generator")),
+  "csv-to-json-converter": dynamic(() => import("./csv-to-json-converter")),
+  "bcrypt-generator": dynamic(() => import("./bcrypt-generator")),
+  "ethereum-unit-converter": dynamic(() => import("./ethereum-unit-converter")),
 };

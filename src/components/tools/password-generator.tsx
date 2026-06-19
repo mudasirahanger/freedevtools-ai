@@ -39,9 +39,11 @@ export default function PasswordGenerator() {
   }, [length, uppercase, lowercase, numbers, symbols]);
 
   useEffect(() => {
-    // eslint-disable-next-line
-    generatePassword();
-  }, []);
+    const timeout = setTimeout(() => {
+      generatePassword();
+    }, 0);
+    return () => clearTimeout(timeout);
+  }, [generatePassword]);
 
   const handleCopy = () => {
     if (password && password !== "Please select at least one character type.") {
