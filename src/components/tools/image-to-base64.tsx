@@ -4,23 +4,22 @@ import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Copy, Trash2, Image as ImageIcon } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 export default function ImageToBase64() {
   const [base64, setBase64] = useState<string>("");
   const [imageInfo, setImageInfo] = useState<{ name: string; size: number; type: string } | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [copied, setCopied] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { toast } = useToast();
 
   const handleFile = (file: File) => {
     if (!file.type.startsWith("image/")) {
-      toast({ title: "Invalid file", description: "Please select an image file.", variant: "destructive" });
+      alert("Please select an image file.");
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      toast({ title: "File too large", description: "Max image size is 5MB.", variant: "destructive" });
+      alert("File is too large. Max image size is 5MB.");
       return;
     }
 
@@ -56,7 +55,8 @@ export default function ImageToBase64() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(base64);
-    toast({ title: "Copied Base64 to clipboard!" });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const formatBytes = (bytes: number) => {
@@ -108,7 +108,7 @@ export default function ImageToBase64() {
                 <Trash2 className="w-4 h-4 mr-2" /> Clear
               </Button>
               <Button onClick={handleCopy}>
-                <Copy className="w-4 h-4 mr-2" /> Copy
+                {copied ? "Copied!" : <><Copy className="w-4 h-4 mr-2" /> Copy</>}
               </Button>
             </div>
           </div>

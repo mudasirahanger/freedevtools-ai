@@ -7,20 +7,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Copy, ShieldCheck, ShieldAlert } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 export default function BcryptGenerator() {
   const [plainText, setPlainText] = useState<string>("");
   const [rounds, setRounds] = useState<number>(10);
   const [hash, setHash] = useState<string>("");
   const [isHashing, setIsHashing] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Compare state
   const [comparePlain, setComparePlain] = useState<string>("");
   const [compareHash, setCompareHash] = useState<string>("");
   const [matchResult, setMatchResult] = useState<boolean | null>(null);
-
-  const { toast } = useToast();
 
   const handleGenerate = () => {
     if (!plainText) return;
@@ -32,7 +30,7 @@ export default function BcryptGenerator() {
         const generatedHash = bcrypt.hashSync(plainText, salt);
         setHash(generatedHash);
       } catch (e) {
-        toast({ title: "Error generating hash", variant: "destructive" });
+        console.error("Error generating hash", e);
       } finally {
         setIsHashing(false);
       }
@@ -51,7 +49,8 @@ export default function BcryptGenerator() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(hash);
-    toast({ title: "Copied to clipboard!" });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -99,8 +98,8 @@ export default function BcryptGenerator() {
               <div className="p-4 bg-muted/50 rounded-lg border space-y-3">
                 <div className="flex justify-between items-center">
                   <Label>Generated Hash</Label>
-                  <Button variant="ghost" size="sm" onClick={handleCopy}>
-                    <Copy className="w-4 h-4 mr-2" /> Copy
+                  <Button variant="outline" size="sm" onClick={handleCopy} disabled={!hash}>
+                    {copied ? "Copied!" : <><Copy className="w-4 h-4 mr-2" /> Copy Hash</>}
                   </Button>
                 </div>
                 <code className="block p-3 bg-background rounded border break-all font-mono text-sm">

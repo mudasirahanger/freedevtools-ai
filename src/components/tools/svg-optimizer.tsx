@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+// @ts-expect-error no types available
 import { optimize } from "svgo/dist/svgo.browser.js";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Copy, Upload, Trash2 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 export default function SvgOptimizer() {
   const [inputSvg, setInputSvg] = useState<string>("");
   const [outputSvg, setOutputSvg] = useState<string>("");
   const [savings, setSavings] = useState<{ original: number; optimized: number; percent: number } | null>(null);
-  const { toast } = useToast();
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const processSvg = async () => {
@@ -47,7 +47,10 @@ export default function SvgOptimizer() {
         optimized: optSize,
         percent: parseFloat(percent.toFixed(2)),
       });
-    };
+    } catch (e) {
+      // Ignore svgo parsing errors during typing
+    }
+  };
     
     // Process asynchronously to avoid synchronous setState during render
     const timeout = setTimeout(() => {
@@ -63,7 +66,8 @@ export default function SvgOptimizer() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(outputSvg);
-    toast({ title: "Copied to clipboard!" });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,7 +129,7 @@ export default function SvgOptimizer() {
           <div className="flex justify-between items-center">
             <label className="text-sm font-medium">Optimized Output</label>
             <Button variant="ghost" size="sm" onClick={handleCopy} disabled={!outputSvg}>
-              <Copy className="w-4 h-4 mr-2" /> Copy
+              {copied ? "Copied!" : <><Copy className="w-4 h-4 mr-2" /> Copy</>}
             </Button>
           </div>
           <Textarea 

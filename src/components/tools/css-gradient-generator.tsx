@@ -4,9 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Copy } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 export default function CssGradientGenerator() {
   const [color1, setColor1] = useState("#4ade80");
@@ -14,7 +12,7 @@ export default function CssGradientGenerator() {
   const [type, setType] = useState("linear");
   const [angle, setAngle] = useState(90);
   const [cssCode, setCssCode] = useState("");
-  const { toast } = useToast();
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     let code = "";
@@ -31,7 +29,8 @@ export default function CssGradientGenerator() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(cssCode);
-    toast({ title: "Copied CSS to clipboard!" });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -45,16 +44,16 @@ export default function CssGradientGenerator() {
         <div className="space-y-6">
           <div className="space-y-3">
             <Label>Gradient Type</Label>
-            <RadioGroup defaultValue={type} onValueChange={setType} className="flex gap-4">
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="linear" id="r1" />
-                <Label htmlFor="r1">Linear</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="radial" id="r2" />
-                <Label htmlFor="r2">Radial</Label>
-              </div>
-            </RadioGroup>
+            <div className="flex gap-4">
+              <label className="flex items-center space-x-2 cursor-pointer">
+                <input type="radio" value="linear" checked={type === "linear"} onChange={(e) => setType(e.target.value)} className="w-4 h-4 text-primary" />
+                <span className="text-sm">Linear</span>
+              </label>
+              <label className="flex items-center space-x-2 cursor-pointer">
+                <input type="radio" value="radial" checked={type === "radial"} onChange={(e) => setType(e.target.value)} className="w-4 h-4 text-primary" />
+                <span className="text-sm">Radial</span>
+              </label>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -94,7 +93,7 @@ export default function CssGradientGenerator() {
           <div className="flex justify-between items-center">
             <Label>CSS Output</Label>
             <Button size="sm" onClick={handleCopy}>
-              <Copy className="w-4 h-4 mr-2" /> Copy CSS
+              {copied ? "Copied!" : <><Copy className="w-4 h-4 mr-2" /> Copy CSS</>}
             </Button>
           </div>
           <code className="block p-4 bg-background rounded-md border font-mono text-sm break-all">

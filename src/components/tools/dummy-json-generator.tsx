@@ -8,7 +8,6 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Copy, RefreshCw } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 type FieldType = {
   id: string;
@@ -20,7 +19,7 @@ type FieldType = {
 export default function DummyJsonGenerator() {
   const [rowCount, setRowCount] = useState<number>(10);
   const [jsonOutput, setJsonOutput] = useState<string>("");
-  const { toast } = useToast();
+  const [copied, setCopied] = useState(false);
 
   const [fields, setFields] = useState<FieldType[]>([
     { id: "id", label: "UUID", generator: () => faker.string.uuid(), enabled: true },
@@ -53,7 +52,6 @@ export default function DummyJsonGenerator() {
       setJsonOutput(JSON.stringify(data, null, 2));
     } catch (error) {
       console.error(error);
-      toast({ title: "Error generating data", variant: "destructive" });
     }
   };
 
@@ -72,7 +70,8 @@ export default function DummyJsonGenerator() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(jsonOutput);
-    toast({ title: "Copied JSON to clipboard!" });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -118,8 +117,8 @@ export default function DummyJsonGenerator() {
       <div className="lg:col-span-2 space-y-2 flex flex-col">
         <div className="flex justify-between items-center">
           <Label>Generated JSON</Label>
-          <Button variant="outline" size="sm" onClick={handleCopy}>
-            <Copy className="w-4 h-4 mr-2" /> Copy JSON
+          <Button variant="outline" size="sm" onClick={handleCopy} disabled={!jsonOutput}>
+            {copied ? "Copied!" : <><Copy className="w-4 h-4 mr-2" /> Copy JSON</>}
           </Button>
         </div>
         <Textarea 
