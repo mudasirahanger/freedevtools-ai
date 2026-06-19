@@ -5,13 +5,12 @@ import Papa from "papaparse";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Copy, ArrowRightLeft } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
 export default function CsvToJsonConverter() {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string>("");
   const [mode, setMode] = useState<"csv2json" | "json2csv">("csv2json");
-  const { toast } = useToast();
+  const [copied, setCopied] = useState(false);
 
   const handleConvert = () => {
     if (!input.trim()) {
@@ -28,11 +27,7 @@ export default function CsvToJsonConverter() {
         });
         
         if (result.errors.length > 0) {
-          toast({ 
-            title: "CSV Parse Error", 
-            description: result.errors[0].message, 
-            variant: "destructive" 
-          });
+          alert("CSV Parse Error: " + result.errors[0].message);
           return;
         }
         
@@ -44,11 +39,7 @@ export default function CsvToJsonConverter() {
       }
     } catch (e: unknown) {
       const errMessage = e instanceof Error ? e.message : "Invalid input format.";
-      toast({ 
-        title: "Conversion Error", 
-        description: errMessage, 
-        variant: "destructive" 
-      });
+      alert("Conversion Error: " + errMessage);
     }
   };
 
@@ -60,7 +51,8 @@ export default function CsvToJsonConverter() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(output);
-    toast({ title: "Copied to clipboard!" });
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -94,7 +86,7 @@ export default function CsvToJsonConverter() {
               Output {mode === "csv2json" ? "JSON" : "CSV"}
             </label>
             <Button variant="ghost" size="sm" onClick={handleCopy} disabled={!output}>
-              <Copy className="w-4 h-4 mr-2" /> Copy
+              {copied ? "Copied!" : <><Copy className="w-4 h-4 mr-2" /> Copy</>}
             </Button>
           </div>
           <Textarea 
