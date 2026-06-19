@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-// @ts-expect-error no types available
-import { optimize } from "svgo/dist/svgo.browser.js";
+import { optimize } from "svgo/browser";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Copy, Upload, Trash2 } from "lucide-react";
@@ -33,7 +32,7 @@ export default function SvgOptimizer() {
                 removeViewBox: false,
               },
             },
-          },
+          } as any,
         ],
       });
       setOutputSvg(result.data);
