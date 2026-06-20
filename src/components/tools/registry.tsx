@@ -41,4 +41,8 @@ export const toolComponents: Record<string, ComponentType> = {
   "csv-to-json-converter": dynamic(() => import("./csv-to-json-converter")),
   "bcrypt-generator": dynamic(() => import("./bcrypt-generator")),
   "ethereum-unit-converter": dynamic(() => import("./ethereum-unit-converter")),
+  "base64-to-image": dynamic(() => import("./base64-to-image")),
+  "base64-to-pdf": dynamic(() => import("./base64-to-pdf")),
+  "file-to-base64": dynamic(() => import("./file-to-base64")),
+  "sample-code-generator": dynamic(() => import("./sample-code-generator")),
 };

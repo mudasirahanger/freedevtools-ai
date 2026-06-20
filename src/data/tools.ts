@@ -207,6 +207,37 @@ export const developerTools: ToolMetadata[] = [
     category: "Converter",
     description: "Convert instantly between Wei, Gwei, and Ether units.",
     metaTitle: "Free Ethereum Unit Converter (Wei to Gwei to Ether)",
-    metaDescription: "Instantly convert Ethereum denominations. Type in Wei, Gwei, or Ether to see real-time conversions.",
+  },
+  {
+    title: "Base64 to Image Viewer",
+    slug: "base64-to-image",
+    category: "Converter",
+    description: "Instantly view and download images from Base64 Data URI strings.",
+    metaTitle: "Free Base64 to Image Viewer Online",
+    metaDescription: "Paste a Base64 string and preview the image instantly. Supports PNG, JPG, WebP, SVG, and more.",
+  },
+  {
+    title: "Base64 to PDF Viewer",
+    slug: "base64-to-pdf",
+    category: "Converter",
+    description: "Preview and download PDF documents directly from Base64 strings.",
+    metaTitle: "Free Base64 to PDF Viewer Online",
+    metaDescription: "Instantly preview and download PDF documents from Base64 encoded strings in your browser.",
+  },
+  {
+    title: "File to Base64",
+    slug: "file-to-base64",
+    category: "Converter",
+    description: "Convert any file into a Base64 encoded string or Data URI.",
+    metaTitle: "Free File to Base64 Converter Online",
+    metaDescription: "Upload any file to securely convert it to a raw Base64 string or Data URI format.",
+  },
+  {
+    title: "Sample Code Generator",
+    slug: "sample-code-generator",
+    category: "Generator",
+    description: "Generate sample boilerplate code for major frameworks like Laravel, Django, Express, and more.",
+    metaTitle: "Free Sample Code Generator for Major Frameworks",
+    metaDescription: "Generate code snippets for classes, functions, and routes in PHP, Python, Go, Java, and Node.js.",
   }
 ];
