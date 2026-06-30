@@ -29,7 +29,7 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {developerTools.slice(0, 10).map((tool) => (
-              <Link key={tool.slug} href={`/tools/${tool.slug}`} className="transition-transform hover:scale-[1.02]">
+              <Link key={tool.slug} href={`/tools/${tool.slug}`} className="block transition-transform hover:scale-[1.02]">
                 <Card className="h-full hover:border-primary/50">
                   <CardHeader>
                     <CardTitle className="text-base">{tool.title}</CardTitle>
@@ -54,7 +54,7 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {aiPromptGenerators.slice(0, 10).map((tool) => (
-              <Link key={tool.slug} href={`/ai-prompt-generators/${tool.slug}`} className="transition-transform hover:scale-[1.02]">
+              <Link key={tool.slug} href={`/ai-prompt-generators/${tool.slug}`} className="block transition-transform hover:scale-[1.02]">
                 <Card className="h-full hover:border-primary/50">
                   <CardHeader>
                     <CardTitle className="text-base">{tool.title}</CardTitle>
@@ -79,7 +79,7 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {seoTools.map((tool) => (
-              <Link key={tool.slug} href={`/seo-tools/${tool.slug}`} className="transition-transform hover:scale-[1.02]">
+              <Link key={tool.slug} href={`/seo-tools/${tool.slug}`} className="block transition-transform hover:scale-[1.02]">
                 <Card className="h-full hover:border-primary/50">
                   <CardHeader>
                     <CardTitle className="text-base">{tool.title}</CardTitle>

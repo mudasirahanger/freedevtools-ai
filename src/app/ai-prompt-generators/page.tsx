@@ -26,7 +26,7 @@ export default function AIPromptsPage() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {aiPromptGenerators.map((tool) => (
-          <Link key={tool.slug} href={`/ai-prompt-generators/${tool.slug}`} className="transition-transform hover:scale-[1.02]">
+          <Link key={tool.slug} href={`/ai-prompt-generators/${tool.slug}`} className="block transition-transform hover:scale-[1.02]">
             <Card className="h-full hover:border-primary/50">
               <CardHeader>
                 <CardTitle className="text-base">{tool.title}</CardTitle>
