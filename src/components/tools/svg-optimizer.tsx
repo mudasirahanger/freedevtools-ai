@@ -32,6 +32,7 @@ export default function SvgOptimizer() {
                 removeViewBox: false,
               },
             },
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } as any,
         ],
       });
@@ -46,7 +47,7 @@ export default function SvgOptimizer() {
         optimized: optSize,
         percent: parseFloat(percent.toFixed(2)),
       });
-    } catch (e) {
+    } catch {
       // Ignore svgo parsing errors during typing
     }
   };
@@ -55,7 +56,7 @@ export default function SvgOptimizer() {
     const timeout = setTimeout(() => {
       try {
         processSvg();
-      } catch (_) {
+      } catch {
         // Don't show error immediately on typing invalid SVG
       }
     }, 0);

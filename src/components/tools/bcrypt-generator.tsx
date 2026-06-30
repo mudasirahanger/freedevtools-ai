@@ -42,7 +42,7 @@ export default function BcryptGenerator() {
     try {
       const isMatch = bcrypt.compareSync(comparePlain, compareHash);
       setMatchResult(isMatch);
-    } catch (e) {
+    } catch {
       setMatchResult(false);
     }
   };

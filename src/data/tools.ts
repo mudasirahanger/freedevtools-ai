@@ -239,5 +239,21 @@ export const developerTools: ToolMetadata[] = [
     description: "Generate sample boilerplate code for major frameworks like Laravel, Django, Express, and more.",
     metaTitle: "Free Sample Code Generator for Major Frameworks",
     metaDescription: "Generate code snippets for classes, functions, and routes in PHP, Python, Go, Java, and Node.js.",
+  },
+  {
+    title: "OpenAPI to TypeScript",
+    slug: "openapi-to-ts",
+    category: "Converter",
+    description: "Convert OpenAPI schema definitions into TypeScript interfaces.",
+    metaTitle: "Free OpenAPI to TypeScript Converter Online",
+    metaDescription: "Convert your Swagger or OpenAPI 3.0 schemas into TypeScript interfaces online.",
+  },
+  {
+    title: "Docker Compose Generator",
+    slug: "docker-compose-generator",
+    category: "Generator",
+    description: "Generate a docker-compose.yml file quickly with a simple interface.",
+    metaTitle: "Free Docker Compose Generator Online",
+    metaDescription: "Visually build and download a docker-compose.yml file for your applications.",
   }
 ];

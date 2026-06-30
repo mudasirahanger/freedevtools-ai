@@ -33,7 +33,7 @@ export default function Base64ToPdf() {
       } else {
         setError("Invalid Base64 format.");
       }
-    } catch (e) {
+    } catch {
       setError("Invalid Base64 string. Cannot decode.");
     }
   };

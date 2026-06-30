@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Wrench } from "lucide-react";
+import { GlobalSearch } from "./global-search";
 
 export function Navbar() {
   return (
@@ -32,7 +33,8 @@ export function Navbar() {
             SEO Tools
           </Link>
         </nav>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 md:space-x-4">
+          <GlobalSearch />
           <ThemeToggle />
         </div>
       </div>
