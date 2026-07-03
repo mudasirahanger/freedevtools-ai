@@ -5,10 +5,23 @@ import { aiPromptGenerators } from "@/data/ai-prompts";
 import { seoTools } from "@/data/seo-tools";
 import { Wrench, Sparkles, LineChart } from "lucide-react";
 import TopBannerAd from "@/components/adsense/TopBannerAd";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": SITE_NAME,
+    "url": SITE_URL,
+    "description": "Free online developer tools including JSON formatters, Encoders, Decoders, Hash generators, and more."
+  };
+
   return (
     <div className="flex flex-col gap-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section className="text-center space-y-4 max-w-3xl mx-auto mt-8">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-foreground">
           Free Developer Tools & AI Prompt Generators

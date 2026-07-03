@@ -3,7 +3,7 @@ import { developerTools } from "@/data/tools";
 import { ToolLayout } from "@/components/tools/ToolLayout";
 import { toolComponents } from "@/components/tools/registry";
 import { Metadata } from "next";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -18,14 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: tool.metaTitle || tool.title,
     description: tool.metaDescription || tool.description,
     alternates: {
-      canonical: `${SITE_NAME === "FreeDevTools AI" ? "https://freedevtools.ai" : "http://localhost:3000"}/tools/${slug}`,
+      canonical: `${SITE_URL}/tools/${slug}`,
     },
     openGraph: {
       title: tool.metaTitle || tool.title,
       description: tool.metaDescription || tool.description,
       siteName: SITE_NAME,
       type: "website",
-      url: `${SITE_NAME === "FreeDevTools AI" ? "https://freedevtools.ai" : "http://localhost:3000"}/tools/${slug}`,
+      url: `${SITE_URL}/tools/${slug}`,
     },
     twitter: {
       card: "summary_large_image",

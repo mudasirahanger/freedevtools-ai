@@ -3,7 +3,7 @@ import { aiPromptGenerators } from "@/data/ai-prompts";
 import { ToolLayout } from "@/components/tools/ToolLayout";
 import { toolComponents } from "@/components/tools/registry";
 import { Metadata } from "next";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -18,14 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: tool.metaTitle || tool.title,
     description: tool.metaDescription || tool.description,
     alternates: {
-      canonical: `${SITE_NAME === "FreeDevTools AI" ? "https://freedevtools.ai" : "http://localhost:3000"}/ai-prompt-generators/${slug}`,
+      canonical: `${SITE_URL}/ai-prompt-generators/${slug}`,
     },
     openGraph: {
       title: tool.metaTitle || tool.title,
       description: tool.metaDescription || tool.description,
       siteName: SITE_NAME,
       type: "website",
-      url: `${SITE_NAME === "FreeDevTools AI" ? "https://freedevtools.ai" : "http://localhost:3000"}/ai-prompt-generators/${slug}`,
+      url: `${SITE_URL}/ai-prompt-generators/${slug}`,
     },
     twitter: {
       card: "summary_large_image",

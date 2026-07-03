@@ -7,16 +7,32 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 import AdSenseScript from "@/components/adsense/AdSenseScript";
-import { SITE_NAME } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${SITE_NAME} - Free Developer Tools & AI Prompt Generators`,
     template: `%s | ${SITE_NAME}`,
   },
   description: "Format JSON, decode JWTs, generate UUIDs, test regex, convert timestamps, and create powerful AI prompts for coding, debugging, and UI design.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: `${SITE_NAME} - Free Developer Tools & AI Prompt Generators`,
+    description: "Format JSON, decode JWTs, generate UUIDs, test regex, convert timestamps, and create powerful AI prompts for coding, debugging, and UI design.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} - Free Developer Tools & AI Prompt Generators`,
+    description: "Format JSON, decode JWTs, generate UUIDs, test regex, convert timestamps, and create powerful AI prompts for coding, debugging, and UI design.",
+  },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
