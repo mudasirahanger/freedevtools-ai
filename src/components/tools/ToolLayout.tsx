@@ -5,6 +5,8 @@ import BottomAd from "@/components/adsense/BottomAd";
 import { ToolMetadata } from "@/types/tool";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface ToolLayoutProps {
   metadata: ToolMetadata;
@@ -32,19 +34,27 @@ export function ToolLayout({ metadata, children }: ToolLayoutProps) {
       <InContentAd />
 
       {/* How to use & Privacy Note */}
-      <section className="space-y-4 prose dark:prose-invert max-w-none">
-        <div className="bg-muted p-4 rounded-lg text-sm mb-6">
+      <section className="space-y-4">
+        <div className="bg-muted p-4 rounded-lg text-sm mb-6 max-w-none">
           <strong>Privacy Note:</strong> This tool runs entirely in your browser. No data is sent to or stored on our servers.
         </div>
         
+        {metadata.longDescription && (
+          <div className="prose dark:prose-invert max-w-none mt-8">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {metadata.longDescription}
+            </ReactMarkdown>
+          </div>
+        )}
+        
         {metadata.faqs && metadata.faqs.length > 0 && (
-          <div className="mt-12 w-full max-w-4xl mx-auto space-y-4">
+          <div className="mt-12 w-full max-w-none space-y-4 prose dark:prose-invert">
             <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
-            <Accordion className="w-full">
+            <Accordion className="w-full not-prose">
               {metadata.faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>{faq.answer}</AccordionContent>
+                  <AccordionTrigger className="text-left font-medium">{faq.question}</AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed">{faq.answer}</AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>

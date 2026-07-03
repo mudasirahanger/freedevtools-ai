@@ -3,6 +3,7 @@ export interface ToolMetadata {
   slug: string;
   category: string;
   description: string;
+  longDescription?: string;
   metaTitle?: string;
   metaDescription?: string;
   keywords?: string[];
