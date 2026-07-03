@@ -29,14 +29,15 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {developerTools.slice(0, 10).map((tool) => (
-              <Link key={tool.slug} href={`/tools/${tool.slug}`} className="block transition-transform hover:scale-[1.02]">
-                <Card className="h-full hover:border-primary/50">
-                  <CardHeader>
-                    <CardTitle className="text-base">{tool.title}</CardTitle>
-                    <CardDescription className="text-sm line-clamp-2">{tool.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
+              <Card key={tool.slug} className="h-full hover:border-primary/50 relative transition-transform hover:scale-[1.02]">
+                <Link href={`/tools/${tool.slug}`} className="absolute inset-0 z-10">
+                  <span className="sr-only">View {tool.title}</span>
+                </Link>
+                <CardHeader className="relative z-20 pointer-events-none">
+                  <CardTitle className="text-base">{tool.title}</CardTitle>
+                  <CardDescription className="text-sm line-clamp-2">{tool.description}</CardDescription>
+                </CardHeader>
+              </Card>
             ))}
           </div>
           <div className="text-center pt-2">
@@ -54,14 +55,15 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {aiPromptGenerators.slice(0, 10).map((tool) => (
-              <Link key={tool.slug} href={`/ai-prompt-generators/${tool.slug}`} className="block transition-transform hover:scale-[1.02]">
-                <Card className="h-full hover:border-primary/50">
-                  <CardHeader>
-                    <CardTitle className="text-base">{tool.title}</CardTitle>
-                    <CardDescription className="text-sm line-clamp-2">{tool.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
+              <Card key={tool.slug} className="h-full hover:border-primary/50 relative transition-transform hover:scale-[1.02]">
+                <Link href={`/ai-prompt-generators/${tool.slug}`} className="absolute inset-0 z-10">
+                  <span className="sr-only">View {tool.title}</span>
+                </Link>
+                <CardHeader className="relative z-20 pointer-events-none">
+                  <CardTitle className="text-base">{tool.title}</CardTitle>
+                  <CardDescription className="text-sm line-clamp-2">{tool.description}</CardDescription>
+                </CardHeader>
+              </Card>
             ))}
           </div>
           <div className="text-center pt-2">
@@ -79,14 +81,15 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
             {seoTools.map((tool) => (
-              <Link key={tool.slug} href={`/seo-tools/${tool.slug}`} className="block transition-transform hover:scale-[1.02]">
-                <Card className="h-full hover:border-primary/50">
-                  <CardHeader>
-                    <CardTitle className="text-base">{tool.title}</CardTitle>
-                    <CardDescription className="text-sm line-clamp-2">{tool.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </Link>
+              <Card key={tool.slug} className="h-full hover:border-primary/50 relative transition-transform hover:scale-[1.02]">
+                <Link href={`/seo-tools/${tool.slug}`} className="absolute inset-0 z-10">
+                  <span className="sr-only">View {tool.title}</span>
+                </Link>
+                <CardHeader className="relative z-20 pointer-events-none">
+                  <CardTitle className="text-base">{tool.title}</CardTitle>
+                  <CardDescription className="text-sm line-clamp-2">{tool.description}</CardDescription>
+                </CardHeader>
+              </Card>
             ))}
           </div>
           <div className="text-center pt-2">

@@ -1,0 +1,11 @@
+▲ Next.js 16.2.9 (webpack)
+- Local:         http://localhost:3005
+- Network:       http://192.168.29.132:3005
+- Environments: .env.local
+✓ Ready in 324ms
+✓ (serwist) Bundling the service worker script with the URL '/sw.js' and the scope '/'...
+
+○ Compiling /tools ...
+ GET /tools 200 in 3.7s (next.js: 3.5s, application-code: 196ms)
+○ Compiling /tools/[slug] ...
+ GET /tools/base64-decode 200 in 7.0s (next.js: 6.8s, generate-params: 1969ms, application-code: 227ms)
