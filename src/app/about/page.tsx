@@ -20,6 +20,14 @@ export default function AboutPage() {
       <p>
         Almost all of our tools run entirely in your browser. We do not send your pasted JSON, tokens, or code snippets to any external servers.
       </p>
+      <h2>Contributors</h2>
+      <p>
+        This project was created and is actively maintained by <strong>Mudasir Ahanger</strong> (<a href="https://github.com/mudasirahanger" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@mudasirahanger</a>).
+      </p>
+      <h2>Acknowledgments</h2>
+      <p>
+        FreeDevTools AI was built with the assistance of advanced AI agents, including <strong>Antigravity (by Google DeepMind)</strong>, which helped architect, debug, and optimize the application to meet industry standards.
+      </p>
     </div>
   );
 }

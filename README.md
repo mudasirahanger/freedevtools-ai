@@ -69,3 +69,9 @@ The `.github/workflows/ci.yml` is configured to run tests (Vitest + Playwright),
 
 ## Contribution
 Check out `develop`, create a feature branch, build your tool in `src/components/tools/`, add it to the data registry in `src/data/`, and submit a PR.
+
+## Core Contributors
+- **Mudasir Ahanger** ([@mudasirahanger](https://github.com/mudasirahanger)) - Creator & Lead Maintainer
+
+## Acknowledgments
+This project was built with the assistance of advanced AI tools, including **Antigravity (by Google DeepMind)**, which helped architect, debug, and optimize the application.
