@@ -9,3 +9,4 @@
  GET /tools 200 in 3.7s (next.js: 3.5s, application-code: 196ms)
 ○ Compiling /tools/[slug] ...
  GET /tools/base64-decode 200 in 7.0s (next.js: 6.8s, generate-params: 1969ms, application-code: 227ms)
+[?25h

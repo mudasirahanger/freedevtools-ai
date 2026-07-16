@@ -18,9 +18,6 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: "Format JSON, decode JWTs, generate UUIDs, test regex, convert timestamps, and create powerful AI prompts for coding, debugging, and UI design.",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: `${SITE_NAME} - Free Developer Tools & AI Prompt Generators`,
     description: "Format JSON, decode JWTs, generate UUIDs, test regex, convert timestamps, and create powerful AI prompts for coding, debugging, and UI design.",
