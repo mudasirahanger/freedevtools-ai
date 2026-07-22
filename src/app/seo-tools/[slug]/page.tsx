@@ -58,6 +58,8 @@ export default async function SeoToolPage({ params }: Props) {
     "@type": "WebApplication",
     "name": tool.title,
     "description": tool.description,
+    "url": `${SITE_URL}/seo-tools/${slug}`,
+    "image": `${SITE_URL}/seo-tools/${slug}/opengraph-image`,
     "applicationCategory": "SEOApplication",
     "operatingSystem": "All",
     "offers": {
@@ -73,7 +75,7 @@ export default async function SeoToolPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ToolLayout metadata={tool}>
+      <ToolLayout metadata={tool} sectionLabel="SEO & Web Tools" sectionHref="/seo-tools">
         <ToolComponent />
       </ToolLayout>
     </>

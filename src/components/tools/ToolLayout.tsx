@@ -7,15 +7,94 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { SITE_URL } from "@/lib/constants";
+import { developerTools } from "@/data/tools";
+import { aiPromptGenerators } from "@/data/ai-prompts";
+import { seoTools } from "@/data/seo-tools";
 
 interface ToolLayoutProps {
   metadata: ToolMetadata;
   children: React.ReactNode;
+  /** Section label shown in the breadcrumb, e.g. "Developer Tools" */
+  sectionLabel: string;
+  /** Section index path, e.g. "/tools" */
+  sectionHref: string;
 }
 
-export function ToolLayout({ metadata, children }: ToolLayoutProps) {
+// Look up which section (and therefore which URL prefix) a given slug
+// actually belongs to, instead of assuming every related tool lives
+// under the current section.
+function resolveToolHref(slug: string): string {
+  if (developerTools.some((t) => t.slug === slug)) return `/tools/${slug}`;
+  if (aiPromptGenerators.some((t) => t.slug === slug)) return `/ai-prompt-generators/${slug}`;
+  if (seoTools.some((t) => t.slug === slug)) return `/seo-tools/${slug}`;
+  // Fall back to /tools/ if the slug isn't found in any registry yet.
+  return `/tools/${slug}`;
+}
+
+export function ToolLayout({ metadata, children, sectionLabel, sectionHref }: ToolLayoutProps) {
+  const breadcrumbItems = [
+    { name: "Home", url: SITE_URL },
+    { name: sectionLabel, url: `${SITE_URL}${sectionHref}` },
+    { name: metadata.title, url: `${SITE_URL}${resolveToolHref(metadata.slug)}` },
+  ];
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbItems.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url,
+    })),
+  };
+
+  const faqJsonLd = metadata.faqs && metadata.faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": metadata.faqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer,
+          },
+        })),
+      }
+    : null;
+
   return (
     <div className="flex flex-col max-w-5xl mx-auto gap-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
+
+      {/* Breadcrumb trail */}
+      <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
+        <ol className="flex flex-wrap items-center gap-1">
+          <li className="flex items-center gap-1">
+            <Link href="/" className="hover:text-foreground hover:underline">Home</Link>
+            <span aria-hidden="true">/</span>
+          </li>
+          <li className="flex items-center gap-1">
+            <Link href={sectionHref} className="hover:text-foreground hover:underline">{sectionLabel}</Link>
+            <span aria-hidden="true">/</span>
+          </li>
+          <li aria-current="page" className="text-foreground font-medium">
+            {metadata.title}
+          </li>
+        </ol>
+      </nav>
+
       {/* Header section */}
       <section className="space-y-4">
         <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground">
@@ -68,9 +147,9 @@ export function ToolLayout({ metadata, children }: ToolLayoutProps) {
           <h2 className="text-2xl font-bold tracking-tight mb-4">Related Tools</h2>
           <div className="flex flex-wrap gap-2">
             {metadata.relatedTools.map((slug) => (
-              <Link 
-                key={slug} 
-                href={`/tools/${slug}`} // Assuming generic tools path for now, adjust in actual implementation if needed
+              <Link
+                key={slug}
+                href={resolveToolHref(slug)}
                 className="text-primary hover:underline text-sm font-medium"
               >
                 {slug.replace(/-/g, " ")}

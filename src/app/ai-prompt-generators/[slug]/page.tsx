@@ -58,6 +58,8 @@ export default async function AIPromptPage({ params }: Props) {
     "@type": "WebApplication",
     "name": tool.title,
     "description": tool.description,
+    "url": `${SITE_URL}/ai-prompt-generators/${slug}`,
+    "image": `${SITE_URL}/ai-prompt-generators/${slug}/opengraph-image`,
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "All",
     "offers": {
@@ -73,7 +75,7 @@ export default async function AIPromptPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ToolLayout metadata={tool}>
+      <ToolLayout metadata={tool} sectionLabel="AI Prompt Generators" sectionHref="/ai-prompt-generators">
         <ToolComponent />
       </ToolLayout>
     </>

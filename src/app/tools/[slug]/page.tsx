@@ -58,6 +58,8 @@ export default async function ToolPage({ params }: Props) {
     "@type": "WebApplication",
     "name": tool.title,
     "description": tool.description,
+    "url": `${SITE_URL}/tools/${slug}`,
+    "image": `${SITE_URL}/tools/${slug}/opengraph-image`,
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "All",
     "offers": {
@@ -73,7 +75,7 @@ export default async function ToolPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ToolLayout metadata={tool}>
+      <ToolLayout metadata={tool} sectionLabel="Developer Tools" sectionHref="/tools">
         <ToolComponent />
       </ToolLayout>
     </>
