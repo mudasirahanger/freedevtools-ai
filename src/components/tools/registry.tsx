@@ -60,4 +60,12 @@ export const toolComponents: Record<string, ComponentType> = {
   "base64-to-pdf": dynamic(() => import("./base64-to-pdf")),
   "file-to-base64": dynamic(() => import("./file-to-base64")),
   "sample-code-generator": dynamic(() => import("./sample-code-generator")),
+  "json-to-typescript": dynamic(() => import("./json-to-typescript")),
+  "curl-to-code": dynamic(() => import("./curl-to-code")),
+  "json-diff-checker": dynamic(() => import("./json-diff-checker")),
+  "yaml-to-json-converter": dynamic(() => import("./yaml-to-json-converter")),
+  "xml-to-json-converter": dynamic(() => import("./xml-to-json-converter")),
+  "number-base-converter": dynamic(() => import("./number-base-converter")),
+  "cidr-calculator": dynamic(() => import("./cidr-calculator")),
+  "lorem-ipsum-generator": dynamic(() => import("./lorem-ipsum-generator")),
 };

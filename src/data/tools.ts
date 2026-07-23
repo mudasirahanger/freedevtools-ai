@@ -1179,5 +1179,248 @@ Hand-writing a \`docker-compose.yml\` file means remembering exact YAML indentat
         answer: "Yes, you can add multiple services (e.g. an app container, a Postgres database, and a Redis cache) and link them together in a single compose file."
       }
     ],
+  },
+  {
+    title: "JSON to TypeScript Interface Generator",
+    slug: "json-to-typescript",
+    category: "Converter",
+    description: "Convert JSON objects into TypeScript interfaces instantly.",
+    metaTitle: "Free JSON to TypeScript Interface Generator",
+    metaDescription: "Paste any JSON and instantly generate matching TypeScript interfaces, including nested objects and arrays. Free, fast, and client-side.",
+    longDescription: `
+## Why generate types from JSON
+
+When you're consuming an API response or working with a sample data file, hand-writing the matching TypeScript interface is tedious and easy to get subtly wrong — a missed optional field or mistyped array shape causes type errors down the line. This tool parses your JSON and infers a complete, nested set of TypeScript interfaces automatically.
+
+### How it works
+
+* **Nested objects** become their own named interface, generated recursively.
+* **Arrays** infer the element type, including unions when array items have mixed shapes.
+* **Null values** are marked as optional fields, since a single JSON sample can't tell us whether a field is always present.
+
+This gives you a solid starting point for typing API responses, config files, or any JSON payload — review and refine the generated types before committing them to your codebase.
+`,
+    faqs: [
+      {
+        question: "Will the generated types be 100% accurate?",
+        answer: "They're inferred from the specific JSON sample you provide, so fields that are sometimes null, sometimes a different type, or missing entirely in your sample won't be perfectly captured. Treat the output as a strong starting point, not a guaranteed schema."
+      },
+      {
+        question: "Is my JSON data sent to a server?",
+        answer: "No, the parsing and type generation happen entirely in your browser using client-side JavaScript."
+      }
+    ],
+  },
+  {
+    title: "cURL to Code Converter",
+    slug: "curl-to-code",
+    category: "Converter",
+    description: "Convert a curl command into JavaScript, Node.js, or Python code.",
+    metaTitle: "Free cURL to Code Converter (fetch, axios, Python)",
+    metaDescription: "Paste a curl command and instantly generate equivalent JavaScript fetch, Node.js axios, or Python requests code. Free and client-side.",
+    longDescription: `
+## From a copied curl command to working code
+
+Browser dev tools and API documentation frequently give you a request as a curl command, but you need it as actual code in your application. Manually translating flags like \`-H\`, \`-d\`, and \`-X\` into the equivalent \`fetch\` call or \`requests\` invocation is repetitive and error-prone, especially with multiple headers or JSON bodies.
+
+### What this tool converts
+
+* **Method and URL:** parsed from \`-X\`/\`--request\` and the target URL.
+* **Headers:** every \`-H\`/\`--header\` flag mapped into the target language's header object.
+* **Request body:** \`-d\`/\`--data\`/\`--data-raw\` mapped to the appropriate body parameter.
+
+Choose your target: JavaScript \`fetch\`, Node.js with \`axios\`, or Python with \`requests\`.
+`,
+    faqs: [
+      {
+        question: "Does this support every curl flag?",
+        answer: "It covers the flags used in the vast majority of API requests: method, headers, and data/body. Less common flags (cookies, client certs, proxies) aren't translated and will be ignored."
+      },
+      {
+        question: "Is my curl command sent to a server to convert?",
+        answer: "No, parsing and code generation both happen locally in your browser."
+      }
+    ],
+  },
+  {
+    title: "JSON Diff Checker",
+    slug: "json-diff-checker",
+    category: "Tester",
+    description: "Compare two JSON objects and see exactly what changed.",
+    metaTitle: "Free JSON Diff Checker Online",
+    metaDescription: "Compare two JSON objects side-by-side and see exactly which keys were added, removed, or changed, at any nesting depth. Fast and client-side.",
+    longDescription: `
+## Comparing JSON structurally, not line by line
+
+A generic text diff on two JSON files flags every line as changed the moment a key gets reordered or reformatted, even if the underlying data is identical. A JSON-aware diff instead compares the actual data structure: it walks both objects key by key and array item by item, so you only see genuine additions, removals, and value changes.
+
+### What gets reported
+
+* **Added keys:** present in the new JSON but not the original.
+* **Removed keys:** present in the original but missing from the new JSON.
+* **Changed values:** the same key exists in both, but its value differs.
+
+Each difference is reported with its full path (e.g. \`user.address.city\`), so you can pinpoint exactly where two API responses, config files, or test fixtures diverge.
+`,
+    faqs: [
+      {
+        question: "Does key order matter in the comparison?",
+        answer: "No, this performs a structural comparison, not a text comparison, so reordering keys in a JSON object does not produce a difference."
+      },
+      {
+        question: "Is my JSON data sent to a server?",
+        answer: "No, the comparison runs entirely in your browser using client-side JavaScript."
+      }
+    ],
+  },
+  {
+    title: "YAML to JSON Converter",
+    slug: "yaml-to-json-converter",
+    category: "Converter",
+    description: "Convert YAML configuration files to JSON and back.",
+    metaTitle: "Free YAML to JSON Converter Online",
+    metaDescription: "Convert YAML to JSON or JSON to YAML instantly. Handles nested mappings, lists, and common config file structures, entirely client-side.",
+    longDescription: `
+## Why convert between YAML and JSON
+
+YAML is the format of choice for Kubernetes manifests, CI/CD pipelines (GitHub Actions, GitLab CI), and many application config files, thanks to its readability. But JavaScript and most APIs work natively with JSON. This tool converts standard block-style YAML into JSON, and can convert JSON back into readable YAML.
+
+### What's supported
+
+* **Nested mappings and lists**, indentation-based, the most common YAML structure in config files.
+* **Scalars:** strings, numbers, booleans, and null values, including quoted strings.
+* **Inline flow syntax:** simple \`[a, b, c]\` arrays and \`{key: value}\` objects.
+
+This covers the vast majority of real-world configuration YAML. Advanced YAML features like anchors/aliases, multi-document files, and complex flow-style edge cases are outside this tool's scope.
+`,
+    faqs: [
+      {
+        question: "Does this support YAML anchors and aliases (&, *)?",
+        answer: "No, anchors and aliases aren't supported. This tool targets the common block-style YAML used in most config files, not the full YAML specification."
+      },
+      {
+        question: "Is my configuration data sent to a server?",
+        answer: "No, all parsing and conversion happens locally in your browser."
+      }
+    ],
+  },
+  {
+    title: "XML to JSON Converter",
+    slug: "xml-to-json-converter",
+    category: "Converter",
+    description: "Convert XML documents to JSON and back.",
+    metaTitle: "Free XML to JSON Converter Online",
+    metaDescription: "Convert XML to JSON or JSON to XML instantly, preserving attributes and nested elements. Runs entirely in your browser.",
+    longDescription: `
+## Working with legacy XML APIs
+
+Many older or enterprise APIs (SOAP services, RSS/Atom feeds, legacy system exports) still respond with XML, while modern frontends are built around JSON. This tool converts XML documents into a JSON structure, and can convert JSON back into well-formed XML.
+
+### Conversion conventions
+
+* **Attributes** are prefixed with \`@\` (e.g. \`<user id="1">\` becomes \`{"@id": "1"}\`).
+* **Text content** alongside attributes is stored under a \`#text\` key.
+* **Repeated child elements** become a JSON array automatically.
+
+The XML parsing itself uses the browser's built-in \`DOMParser\`, so it correctly handles standard well-formed XML documents.
+`,
+    faqs: [
+      {
+        question: "How are XML attributes represented in the JSON output?",
+        answer: "Attributes are converted to keys prefixed with @, for example <item id=\"5\"> becomes { \"@id\": \"5\" }, to distinguish them from child elements."
+      },
+      {
+        question: "Is my XML document uploaded to a server?",
+        answer: "No, parsing and conversion happen entirely in your browser using the native DOMParser API."
+      }
+    ],
+  },
+  {
+    title: "Number Base Converter",
+    slug: "number-base-converter",
+    category: "Converter",
+    description: "Convert numbers between binary, octal, decimal, and hexadecimal.",
+    metaTitle: "Free Number Base Converter (Binary, Octal, Decimal, Hex)",
+    metaDescription: "Convert numbers between binary, octal, decimal, and hexadecimal instantly, with support for very large numbers. Free and client-side.",
+    longDescription: `
+## Why different number bases matter
+
+Programmers regularly move between number bases: binary for bitwise operations and flags, hexadecimal for memory addresses, colors, and hashes, octal for legacy Unix file permissions, and decimal for everyday arithmetic. Converting between them by hand is slow and error-prone, especially for large values.
+
+### What this tool converts
+
+* **Binary (base 2)**, **Octal (base 8)**, **Decimal (base 10)**, and **Hexadecimal (base 16)** — enter a number in any one base and see it instantly converted to the other three.
+* Uses JavaScript's \`BigInt\` internally, so it correctly handles numbers far larger than the standard 32-bit integer range.
+`,
+    faqs: [
+      {
+        question: "Can this handle numbers larger than 32 bits?",
+        answer: "Yes, conversions use BigInt arithmetic internally, so very large numbers convert correctly without precision loss."
+      },
+      {
+        question: "Why does hexadecimal output use uppercase letters?",
+        answer: "Uppercase A-F is the more common convention for hex output in most programming contexts, though hexadecimal is case-insensitive when you use it as input."
+      }
+    ],
+  },
+  {
+    title: "CIDR / Subnet Calculator",
+    slug: "cidr-calculator",
+    category: "Tester",
+    description: "Calculate network address, broadcast address, and usable host range from CIDR notation.",
+    metaTitle: "Free CIDR / Subnet Calculator Online",
+    metaDescription: "Calculate network address, broadcast address, subnet mask, and usable host range from any IPv4 CIDR notation instantly.",
+    longDescription: `
+## What CIDR notation describes
+
+CIDR (Classless Inter-Domain Routing) notation, like \`192.168.1.0/24\`, combines an IP address with a prefix length that defines how many bits are reserved for the network portion versus the host portion. Understanding exactly which addresses fall inside a given subnet is a routine task in network configuration, firewall rules, and cloud VPC design.
+
+### What this calculator computes
+
+* **Network and broadcast address:** the first and last addresses in the subnet.
+* **Subnet mask and wildcard mask:** both standard representations of the prefix length.
+* **Usable host range:** the first and last addresses actually assignable to devices.
+* **Total vs. usable host counts**, correctly handling the special cases of /31 (point-to-point links) and /32 (single host).
+`,
+    faqs: [
+      {
+        question: "Why does a /24 subnet only have 254 usable hosts, not 256?",
+        answer: "The first address in any standard subnet is reserved as the network address, and the last is reserved as the broadcast address, leaving the remaining 254 addresses assignable to hosts."
+      },
+      {
+        question: "What's special about /31 and /32 subnets?",
+        answer: "A /32 identifies a single host with no separate network or broadcast address. A /31 (RFC 3021) is used for point-to-point links and treats both of its two addresses as usable, since there's no need for a broadcast address on a two-host link."
+      }
+    ],
+  },
+  {
+    title: "Lorem Ipsum Generator",
+    slug: "lorem-ipsum-generator",
+    category: "Generator",
+    description: "Generate placeholder text by paragraphs, sentences, or words.",
+    metaTitle: "Free Lorem Ipsum Generator Online",
+    metaDescription: "Generate classic Lorem Ipsum placeholder text by paragraphs, sentences, or words for mockups, wireframes, and design layouts.",
+    longDescription: `
+## Why designers and developers still use Lorem Ipsum
+
+Lorem Ipsum is scrambled, meaningless Latin-derived text used as filler content in mockups, wireframes, and layout prototypes. Using nonsense text instead of real copy keeps reviewers focused on layout, typography, and spacing rather than getting distracted by (or blocked on) actual content that isn't ready yet.
+
+### What you can generate
+
+* **Paragraphs, sentences, or words** — pick the unit and exact count you need.
+* **Classic opening** — optionally start with the traditional "Lorem ipsum dolor sit amet" for that familiar placeholder look.
+
+Generate as much or as little as your layout needs, then copy it straight into your design tool or codebase.
+`,
+    faqs: [
+      {
+        question: "Is Lorem Ipsum actual Latin?",
+        answer: "It's derived from a scrambled passage of Cicero's writing from 45 BC, but in its commonly used form it isn't grammatically correct or meaningful Latin — it's intentionally nonsensical filler text."
+      },
+      {
+        question: "Why use Lorem Ipsum instead of real placeholder sentences?",
+        answer: "Its familiar, neutral appearance signals clearly to reviewers that the content is a placeholder, and its relatively even distribution of letter and word lengths approximates the visual density of real paragraph text."
+      }
+    ],
   }
 ];

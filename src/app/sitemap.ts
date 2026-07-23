@@ -8,7 +8,7 @@ import { seoTools } from '@/data/seo-tools';
 // manually-updated date (instead of `new Date()` at build time) keeps the
 // lastModified signal meaningful to crawlers instead of reporting every
 // URL as "just changed" on every deploy.
-const LAST_MODIFIED = new Date("2026-07-22T00:00:00.000Z").toISOString();
+const LAST_MODIFIED = new Date("2026-07-23T00:00:00.000Z").toISOString();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
